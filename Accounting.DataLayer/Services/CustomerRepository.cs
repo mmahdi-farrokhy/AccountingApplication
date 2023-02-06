@@ -28,6 +28,15 @@ namespace Accounting.DataLayer.Services
             return db.Customers.Find(customerId);
         }
 
+        public IEnumerable<Customers> GetCustomersByFilter(string filter)
+        {
+            return db.Customers.Where(customer => 
+                                        customer.FullName.Contains(filter) || 
+                                        customer.Email.Contains(filter) || 
+                                        customer.Mobile.Contains(filter))
+                                        .ToList();
+        }
+
         public bool InsertCustomer(Customers customer)
         {
             try
@@ -79,11 +88,6 @@ namespace Accounting.DataLayer.Services
             {
                 return false;
             }
-        }
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }        
+        }   
     }
 }

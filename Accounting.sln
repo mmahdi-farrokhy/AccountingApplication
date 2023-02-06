@@ -7,11 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.App", "Accountin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.ViewModels", "Accounting.ViewModel\Accounting.ViewModels.csproj", "{4997F926-BD67-40B9-BDD0-D93CA4D899E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{A5EC0231-9F73-4638-9384-A49471652191}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.Utility", "Accounting.Utility\Accounting.Utility.csproj", "{83039DD1-2F53-4CEA-A21F-80E443028E07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.DataLayer", "Accounting.DataLayer\Accounting.DataLayer.csproj", "{0B641EE1-06ED-4C96-B2CF-36D23E350553}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ECB10A00-8329-4EE9-B43A-47F6C9663B49}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +31,6 @@ Global
 		{4997F926-BD67-40B9-BDD0-D93CA4D899E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4997F926-BD67-40B9-BDD0-D93CA4D899E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4997F926-BD67-40B9-BDD0-D93CA4D899E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5EC0231-9F73-4638-9384-A49471652191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5EC0231-9F73-4638-9384-A49471652191}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5EC0231-9F73-4638-9384-A49471652191}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5EC0231-9F73-4638-9384-A49471652191}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83039DD1-2F53-4CEA-A21F-80E443028E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83039DD1-2F53-4CEA-A21F-80E443028E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83039DD1-2F53-4CEA-A21F-80E443028E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
