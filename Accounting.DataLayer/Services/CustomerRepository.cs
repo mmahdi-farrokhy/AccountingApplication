@@ -54,6 +54,13 @@ namespace Accounting.DataLayer.Services
         {
             try
             {
+                var local = db.Set<Customers>()
+                    .Local
+                    .FirstOrDefault(f => f.CustomerID == customer.CustomerID);
+
+                if (local != null)
+                    db.Entry(local).State = EntityState.Detached;
+
                 db.Entry(customer).State = EntityState.Modified;
                 return true;
             }

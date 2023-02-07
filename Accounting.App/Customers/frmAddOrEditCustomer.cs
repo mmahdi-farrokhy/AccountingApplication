@@ -15,11 +15,27 @@ namespace Accounting.App
 {
     public partial class frmAddOrEditCustomer : Form
     {
-        DBAccess db = new DBAccess();
+        private DBAccess db = new DBAccess();
+        public int _customerId = 0;
 
         public frmAddOrEditCustomer()
         {
             InitializeComponent();
+        }
+
+        private void frmAddOrEditCustomer_Load(object sender, EventArgs e)
+        {
+            if (_customerId != 0)
+            {
+                this.Text = "ویرایش شخص";
+                btnSaveCustomer.Text = "ویرایش";
+                var customer = db.CustomerRepository.GetCustomerById(_customerId);
+                txtName.Text = customer.FullName;
+                txtMobile.Text = customer.Mobile;
+                txtEmail.Text = customer.Email;
+                txtAddress.Text = customer.Address;
+                pboxPhoto.ImageLocation = Application.StartupPath + @"\Images\" + customer.CustomerImage;
+            }
         }
 
         private void btnChoosePhoto_Click(object sender, EventArgs e)
@@ -34,7 +50,7 @@ namespace Accounting.App
             if (BaseValidator.IsFormValid(this.components))
             {
                 string imageName = Guid.NewGuid().ToString() + Path.GetExtension(pboxPhoto.ImageLocation);
-                string imagePath = Application.StartupPath + "Images/";
+                string imagePath = Application.StartupPath + "/Images/";
 
                 if (!Directory.Exists(imagePath))
                     Directory.CreateDirectory(imagePath);
@@ -49,10 +65,17 @@ namespace Accounting.App
                     CustomerImage = imageName
                 };
 
-                db.CustomerRepository.InsertCustomer(newCustomer);
+                if (_customerId == 0)
+                    db.CustomerRepository.InsertCustomer(newCustomer);
+                else
+                {
+                    newCustomer.CustomerID = _customerId;
+                    db.CustomerRepository.UpdateCustomer(newCustomer);
+                }
+
                 db.Save();
                 DialogResult = DialogResult.OK;
-            }
-        }
+            } 
+        }        
     }
 }
