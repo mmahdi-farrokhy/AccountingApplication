@@ -74,6 +74,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(201, 51);
             this.txtAddress.TabIndex = 7;
+            this.txtAddress.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearAddress);
             // 
             // lblAddress
             // 
@@ -88,8 +89,10 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(28, 138);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtEmail.Size = new System.Drawing.Size(201, 21);
             this.txtEmail.TabIndex = 5;
+            this.txtEmail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearEmail);
             // 
             // lblEmail
             // 
@@ -104,8 +107,10 @@
             // 
             this.txtMobile.Location = new System.Drawing.Point(28, 91);
             this.txtMobile.Name = "txtMobile";
+            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtMobile.Size = new System.Drawing.Size(201, 21);
             this.txtMobile.TabIndex = 3;
+            this.txtMobile.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearMobile);
             // 
             // lblMobile
             // 
@@ -122,6 +127,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(201, 21);
             this.txtName.TabIndex = 1;
+            this.txtName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearName);
             // 
             // lblName
             // 

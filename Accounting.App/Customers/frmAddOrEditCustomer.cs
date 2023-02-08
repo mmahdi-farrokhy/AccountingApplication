@@ -17,6 +17,10 @@ namespace Accounting.App
     {
         private DBAccess db = new DBAccess();
         public int _customerId = 0;
+        private const string DEFAULT_MOBILE = "09_________";
+        private const string DEFAULT_EMAIL   = "E-Mail";
+        private const string DEFAULT_NAME = "نام و نام خانوادگی";
+        private const string DEFAULT_ADDRESS = "آدرس خود را وارد کنید.";
 
         public frmAddOrEditCustomer()
         {
@@ -25,6 +29,11 @@ namespace Accounting.App
 
         private void frmAddOrEditCustomer_Load(object sender, EventArgs e)
         {
+            SetDefaultValue(txtName, DEFAULT_NAME);
+            SetDefaultValue(txtMobile, DEFAULT_MOBILE);
+            SetDefaultValue(txtEmail, DEFAULT_EMAIL);
+            SetDefaultValue(txtAddress, DEFAULT_ADDRESS);
+
             if (_customerId != 0)
             {
                 this.Text = "ویرایش شخص";
@@ -35,7 +44,7 @@ namespace Accounting.App
                 txtEmail.Text = customer.Email;
                 txtAddress.Text = customer.Address;
                 pboxPhoto.ImageLocation = Application.StartupPath + @"\Images\" + customer.CustomerImage;
-            }
+            }            
         }
 
         private void btnChoosePhoto_Click(object sender, EventArgs e)
@@ -77,5 +86,55 @@ namespace Accounting.App
                 DialogResult = DialogResult.OK;
             } 
         }        
+
+        private void SetDefaultValue(TextBox field, string defautValue)
+        {
+            if(_customerId == 0)
+                if (field.Text == null || field.Text == string.Empty)
+                {
+                    field.Text = defautValue;
+                    field.ForeColor = Color.LightGray;
+                }
+        }
+
+        private void ClearName(object sender, MouseEventArgs e)
+        {
+            SetDefaultValue(txtMobile, DEFAULT_MOBILE);
+            SetDefaultValue(txtEmail, DEFAULT_EMAIL);
+            SetDefaultValue(txtAddress, DEFAULT_ADDRESS);
+
+            if (_customerId == 0)
+                txtName.Clear();
+        }
+       
+        private void ClearMobile(object sender, MouseEventArgs e)
+        {
+            SetDefaultValue(txtName, DEFAULT_NAME);
+            SetDefaultValue(txtEmail, DEFAULT_EMAIL);
+            SetDefaultValue(txtAddress, DEFAULT_ADDRESS);
+
+            if (_customerId == 0)
+                txtMobile.Clear();
+        }
+
+        private void ClearEmail(object sender, MouseEventArgs e)
+        {
+            SetDefaultValue(txtName, DEFAULT_NAME);
+            SetDefaultValue(txtMobile, DEFAULT_MOBILE);
+            SetDefaultValue(txtAddress, DEFAULT_ADDRESS);
+
+            if (_customerId == 0)
+                txtEmail.Clear();
+        }
+
+        private void ClearAddress(object sender, MouseEventArgs e)
+        {
+            SetDefaultValue(txtName, DEFAULT_NAME);
+            SetDefaultValue(txtEmail, DEFAULT_EMAIL);
+            SetDefaultValue(txtMobile, DEFAULT_MOBILE);
+
+            if (_customerId == 0)
+                txtAddress.Clear();
+        }
     }
 }
