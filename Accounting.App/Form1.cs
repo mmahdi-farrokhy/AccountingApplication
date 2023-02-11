@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accounting.App.Transactions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,12 @@ namespace Accounting.App
         {
             frmCustomers customersForm = new frmCustomers();
             customersForm.ShowDialog();
+        }
+
+        private void btnNewTransaction_Click(object sender, EventArgs e)
+        {
+            frmNewTransaction newTransaction = new frmNewTransaction();
+            newTransaction.ShowDialog();
         }
     }
 }

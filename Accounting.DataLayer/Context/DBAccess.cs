@@ -8,10 +8,23 @@ using System.Threading.Tasks;
 
 namespace Accounting.DataLayer.Context
 {
-    public class DBAccess:IDisposable
+    public class DBAccess:IDisposable // Unit Of Work
     {
         private Accounting_DBEntities db = new Accounting_DBEntities();
         private ICustomerRepository _customerRepository;
+        private DBFunction<Accounting> _accountingRepository;
+
+
+        public DBFunction<Accounting> AccountingRepository
+        {
+            get
+            {
+                if (_accountingRepository == null)
+                    _accountingRepository = new DBFunction<Accounting>(db);
+
+                return _accountingRepository;
+            }
+        }
 
         public ICustomerRepository CustomerRepository
         {

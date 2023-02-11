@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace Accounting.DataLayer.Services
 {
-    public class DBFunction<TEntity> where TEntity:class
+    public class DBFunction<TEntity> where TEntity:class // Generic Repository
     {
         private Accounting_DBEntities _db;
         private DbSet<TEntity> _dbSet;
@@ -19,7 +19,7 @@ namespace Accounting.DataLayer.Services
             _db = db;
             _dbSet = _db.Set<TEntity>();
         }
-
+        
         public virtual IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> where = null)
         {
             IQueryable<TEntity> query = _dbSet;

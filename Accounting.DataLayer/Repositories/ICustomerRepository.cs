@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Accounting.DataLayer.Context;
+using Accounting.ViewModels.Customers;
 
 namespace Accounting.DataLayer.Repositories
 {
@@ -12,6 +13,7 @@ namespace Accounting.DataLayer.Repositories
         List<Customers> GetAllCustomers();
         Customers GetCustomerById(int customerId);
         IEnumerable<Customers> GetCustomersByFilter(string filter);
+        List<CustomersListView> GetCustomersName(string filter = "");
         bool InsertCustomer(Customers customer);
         bool UpdateCustomer(Customers customer);
         bool DeleteCustomer(Customers customer);

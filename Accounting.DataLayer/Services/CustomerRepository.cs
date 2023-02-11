@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Accounting.DataLayer.Repositories;
 using Accounting.DataLayer.Context;
 using System.Data.Entity;
+using Accounting.ViewModels.Customers;
 
 namespace Accounting.DataLayer.Services
 {
@@ -30,11 +31,31 @@ namespace Accounting.DataLayer.Services
 
         public IEnumerable<Customers> GetCustomersByFilter(string filter)
         {
-            return db.Customers.Where(customer => 
-                                        customer.FullName.Contains(filter) || 
-                                        customer.Email.Contains(filter) || 
+            return db.Customers.Where(customer =>
+                                        customer.FullName.Contains(filter) ||
+                                        customer.Email.Contains(filter) ||
                                         customer.Mobile.Contains(filter))
                                         .ToList();
+        }
+
+        public List<CustomersListView> GetCustomersName(string filter = "")
+        {
+            if (filter == "")
+                return db.Customers
+                    .Select(customer => new CustomersListView()
+                    {
+                        CustomerID = customer.CustomerID,
+                        CustomerName = customer.FullName
+                    }).ToList();
+
+            return db.Customers
+                .Where(customer => customer.FullName.Contains(filter))
+                .Select(customer => new CustomersListView()
+                {
+                    CustomerID = customer.CustomerID,
+                    CustomerName = customer.FullName
+                })
+                .ToList();
         }
 
         public bool InsertCustomer(Customers customer)
@@ -47,7 +68,7 @@ namespace Accounting.DataLayer.Services
             catch (Exception)
             {
                 return false;
-            }            
+            }
         }
 
         public bool UpdateCustomer(Customers customer)
@@ -95,6 +116,6 @@ namespace Accounting.DataLayer.Services
             {
                 return false;
             }
-        }   
+        }
     }
 }
