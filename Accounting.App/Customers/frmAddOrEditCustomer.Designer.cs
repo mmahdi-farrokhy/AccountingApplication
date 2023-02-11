@@ -75,6 +75,7 @@
             this.txtAddress.Size = new System.Drawing.Size(201, 51);
             this.txtAddress.TabIndex = 7;
             this.txtAddress.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearAddress);
+            this.txtAddress.TextChanged += new System.EventHandler(this.SetFontColor);
             // 
             // lblAddress
             // 
@@ -93,6 +94,7 @@
             this.txtEmail.Size = new System.Drawing.Size(201, 21);
             this.txtEmail.TabIndex = 5;
             this.txtEmail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearEmail);
+            this.txtEmail.TextChanged += new System.EventHandler(this.SetFontColor);
             // 
             // lblEmail
             // 
@@ -111,6 +113,7 @@
             this.txtMobile.Size = new System.Drawing.Size(201, 21);
             this.txtMobile.TabIndex = 3;
             this.txtMobile.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearMobile);
+            this.txtMobile.TextChanged += new System.EventHandler(this.SetFontColor);
             // 
             // lblMobile
             // 
@@ -128,6 +131,7 @@
             this.txtName.Size = new System.Drawing.Size(201, 21);
             this.txtName.TabIndex = 1;
             this.txtName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClearName);
+            this.txtName.TextChanged += new System.EventHandler(this.SetFontColor);
             // 
             // lblName
             // 

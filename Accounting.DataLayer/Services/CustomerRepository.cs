@@ -58,6 +58,16 @@ namespace Accounting.DataLayer.Services
                 .ToList();
         }
 
+        public int GetCustomerIdByName(string FullName)
+        {
+            return db.Customers.First(customer => customer.FullName == FullName).CustomerID;
+        }
+
+        public string GetCustomerNameById(int customerId)
+        {
+            return db.Customers.Find(customerId).FullName;
+        }
+
         public bool InsertCustomer(Customers customer)
         {
             try

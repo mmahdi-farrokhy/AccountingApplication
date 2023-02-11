@@ -26,8 +26,22 @@ namespace Accounting.App
 
         private void btnNewTransaction_Click(object sender, EventArgs e)
         {
-            frmNewTransaction newTransaction = new frmNewTransaction();
-            newTransaction.ShowDialog();
+            frmNewTransaction newTransactionForm = new frmNewTransaction();
+            newTransactionForm.ShowDialog();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            frmReport reportForm = new frmReport();
+            reportForm.TypeID = 2;
+            reportForm.ShowDialog();
+        }
+
+        private void btnReportIncome_Click(object sender, EventArgs e)
+        {
+            frmReport reportForm = new frmReport();
+            reportForm.TypeID = 1;
+            reportForm.ShowDialog();
         }
     }
 }

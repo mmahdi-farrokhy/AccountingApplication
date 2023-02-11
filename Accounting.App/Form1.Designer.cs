@@ -33,6 +33,8 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewTransaction = new System.Windows.Forms.ToolStripButton();
+            this.btnReportOutcome = new System.Windows.Forms.ToolStripButton();
+            this.btnReportIncome = new System.Windows.Forms.ToolStripButton();
             this.menuSttings = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -53,7 +55,9 @@
             this.toolStrip2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCustomers,
-            this.btnNewTransaction});
+            this.btnNewTransaction,
+            this.btnReportOutcome,
+            this.btnReportIncome});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(784, 62);
@@ -62,25 +66,50 @@
             // 
             // btnCustomers
             // 
+            this.btnCustomers.AutoSize = false;
             this.btnCustomers.Image = global::Accounting.App.Properties.Resources._customer;
             this.btnCustomers.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCustomers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(71, 59);
+            this.btnCustomers.Size = new System.Drawing.Size(98, 59);
             this.btnCustomers.Text = "طرف حساب";
             this.btnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
             // 
             // btnNewTransaction
             // 
+            this.btnNewTransaction.AutoSize = false;
             this.btnNewTransaction.Image = global::Accounting.App.Properties.Resources._pose;
             this.btnNewTransaction.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnNewTransaction.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewTransaction.Name = "btnNewTransaction";
-            this.btnNewTransaction.Size = new System.Drawing.Size(72, 59);
+            this.btnNewTransaction.Size = new System.Drawing.Size(98, 59);
             this.btnNewTransaction.Text = "تراکنش جدید";
             this.btnNewTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewTransaction.Click += new System.EventHandler(this.btnNewTransaction_Click);
+            // 
+            // btnReportOutcome
+            // 
+            this.btnReportOutcome.AutoSize = false;
+            this.btnReportOutcome.Image = global::Accounting.App.Properties.Resources.servicesCosts;
+            this.btnReportOutcome.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportOutcome.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportOutcome.Name = "btnReportOutcome";
+            this.btnReportOutcome.Size = new System.Drawing.Size(98, 59);
+            this.btnReportOutcome.Text = "گزارش پرداختی ها";
+            this.btnReportOutcome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportOutcome.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // btnReportIncome
+            // 
+            this.btnReportIncome.Image = ((System.Drawing.Image)(resources.GetObject("btnReportIncome.Image")));
+            this.btnReportIncome.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportIncome.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportIncome.Name = "btnReportIncome";
+            this.btnReportIncome.Size = new System.Drawing.Size(98, 59);
+            this.btnReportIncome.Text = "گزارش دریافتی ها";
+            this.btnReportIncome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportIncome.Click += new System.EventHandler(this.btnReportIncome_Click);
             // 
             // menuSttings
             // 
@@ -120,6 +149,8 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnCustomers;
         private System.Windows.Forms.ToolStripButton btnNewTransaction;
+        private System.Windows.Forms.ToolStripButton btnReportOutcome;
+        private System.Windows.Forms.ToolStripButton btnReportIncome;
     }
 }
 

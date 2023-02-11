@@ -105,6 +105,7 @@ namespace Accounting.App
 
             if (_customerId == 0)
                 txtName.Clear();
+            txtName.ForeColor = Color.Black;
         }
        
         private void ClearMobile(object sender, MouseEventArgs e)
@@ -115,6 +116,7 @@ namespace Accounting.App
 
             if (_customerId == 0)
                 txtMobile.Clear();
+            txtMobile.ForeColor = Color.Black;
         }
 
         private void ClearEmail(object sender, MouseEventArgs e)
@@ -125,6 +127,7 @@ namespace Accounting.App
 
             if (_customerId == 0)
                 txtEmail.Clear();
+            txtEmail.ForeColor = Color.Black;
         }
 
         private void ClearAddress(object sender, MouseEventArgs e)
@@ -135,6 +138,14 @@ namespace Accounting.App
 
             if (_customerId == 0)
                 txtAddress.Clear();
+            txtAddress.ForeColor = Color.Black;
         }
+
+        private void SetFontColor(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.ForeColor = Color.Black;
+        }
+
     }
 }
