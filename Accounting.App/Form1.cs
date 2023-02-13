@@ -43,5 +43,12 @@ namespace Accounting.App
             reportForm.TypeID = 1;
             reportForm.ShowDialog();
         }
+
+        private void btnReportAll_Click(object sender, EventArgs e)
+        {
+            frmReport reportForm = new frmReport();
+            reportForm.TypeID = 0;
+            reportForm.ShowDialog();
+        }
     }
 }

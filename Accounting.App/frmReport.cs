@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accounting.DataLayer.Context;
 using Accounting.Utility.Convertor;
+using Accounting.App.Transactions;
 
 namespace Accounting.App
 {
@@ -22,17 +23,12 @@ namespace Accounting.App
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-            this.Text = (TypeID == 1) ? "گزارش دریافتی ها" : "گزارش پرداختی ها";
-        }
-
-        private void lblFromDate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
+            if (TypeID == 0)
+                this.Text = "گزارش کلی";
+            if (TypeID == 1)
+                this.Text = "گزارش دریافتی ها";
+            if (TypeID == 2)
+                this.Text =  "گزارش پرداختی ها";
         }
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
@@ -44,7 +40,9 @@ namespace Accounting.App
         {
             using (DBAccess db = new DBAccess())
             {
-                var result = db.AccountingRepository.GetAll(accounting => accounting.TypeID == TypeID);
+                var result = TypeID != 0
+                    ? db.AccountingRepository.GetAll(accounting => accounting.TypeID == TypeID)
+                    : db.AccountingRepository.GetAll();
                 dgReport.AutoGenerateColumns = false;
 
                 dgReport.Rows.Clear();
@@ -74,6 +72,21 @@ namespace Accounting.App
                         db.Save();
                         Filter();
                     }
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgReport.CurrentRow != null)
+            {
+                int id = int.Parse(dgReport.CurrentRow.Cells[0].Value.ToString());
+                frmNewTransaction newTransction = new frmNewTransaction();
+                newTransction.AccountId = id;
+
+                if(newTransction.ShowDialog() == DialogResult.OK)
+                {
+                    Filter();
                 }
             }
         }

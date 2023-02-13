@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.menuSttings = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewTransaction = new System.Windows.Forms.ToolStripButton();
             this.btnReportOutcome = new System.Windows.Forms.ToolStripButton();
             this.btnReportIncome = new System.Windows.Forms.ToolStripButton();
-            this.menuSttings = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnReportAll = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +51,15 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // menuSttings
+            // 
+            this.menuSttings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuSttings.Image = ((System.Drawing.Image)(resources.GetObject("menuSttings.Image")));
+            this.menuSttings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuSttings.Name = "menuSttings";
+            this.menuSttings.Size = new System.Drawing.Size(63, 22);
+            this.menuSttings.Text = "تنظیمات";
+            // 
             // toolStrip2
             // 
             this.toolStrip2.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -57,7 +67,8 @@
             this.btnCustomers,
             this.btnNewTransaction,
             this.btnReportOutcome,
-            this.btnReportIncome});
+            this.btnReportIncome,
+            this.btnReportAll});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(784, 62);
@@ -111,14 +122,16 @@
             this.btnReportIncome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReportIncome.Click += new System.EventHandler(this.btnReportIncome_Click);
             // 
-            // menuSttings
+            // btnReportAll
             // 
-            this.menuSttings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuSttings.Image = ((System.Drawing.Image)(resources.GetObject("menuSttings.Image")));
-            this.menuSttings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menuSttings.Name = "menuSttings";
-            this.menuSttings.Size = new System.Drawing.Size(63, 22);
-            this.menuSttings.Text = "تنظیمات";
+            this.btnReportAll.Image = global::Accounting.App.Properties.Resources._list;
+            this.btnReportAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportAll.Name = "btnReportAll";
+            this.btnReportAll.Size = new System.Drawing.Size(65, 59);
+            this.btnReportAll.Text = "گزارش کلی";
+            this.btnReportAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportAll.Click += new System.EventHandler(this.btnReportAll_Click);
             // 
             // Form1
             // 
@@ -151,6 +164,7 @@
         private System.Windows.Forms.ToolStripButton btnNewTransaction;
         private System.Windows.Forms.ToolStripButton btnReportOutcome;
         private System.Windows.Forms.ToolStripButton btnReportIncome;
+        private System.Windows.Forms.ToolStripButton btnReportAll;
     }
 }
 

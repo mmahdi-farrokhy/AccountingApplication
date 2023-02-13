@@ -30,17 +30,17 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
-            this.lblFromDate = new System.Windows.Forms.Label();
-            this.txtStartDate = new System.Windows.Forms.MaskedTextBox();
+            this.btnApplyFilter = new System.Windows.Forms.Button();
             this.txtEndDate = new System.Windows.Forms.MaskedTextBox();
             this.lblToDate = new System.Windows.Forms.Label();
-            this.btnApplyFilter = new System.Windows.Forms.Button();
+            this.txtStartDate = new System.Windows.Forms.MaskedTextBox();
+            this.lblFromDate = new System.Windows.Forms.Label();
+            this.cbCustomer = new System.Windows.Forms.ComboBox();
+            this.lblName = new System.Windows.Forms.Label();
             this.dgReport = new System.Windows.Forms.DataGridView();
             this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,17 +77,7 @@
             this.btnEdit.Size = new System.Drawing.Size(60, 59);
             this.btnEdit.Text = "ویرایش";
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Image = global::Accounting.App.Properties.Resources._loading;
-            this.btnRefresh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(60, 59);
-            this.btnRefresh.Text = "بروزرسانی";
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -100,6 +90,17 @@
             this.btnDelete.Text = "حذف";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = global::Accounting.App.Properties.Resources._loading;
+            this.btnRefresh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(60, 59);
+            this.btnRefresh.Text = "بروزرسانی";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnPrint
             // 
@@ -129,41 +130,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "فیلتر کردن";
             // 
-            // lblName
+            // btnApplyFilter
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(506, 27);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(67, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "طرف حساب:";
-            // 
-            // cbCustomer
-            // 
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(375, 24);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(131, 21);
-            this.cbCustomer.TabIndex = 2;
-            // 
-            // lblFromDate
-            // 
-            this.lblFromDate.AutoSize = true;
-            this.lblFromDate.Location = new System.Drawing.Point(332, 27);
-            this.lblFromDate.Name = "lblFromDate";
-            this.lblFromDate.Size = new System.Drawing.Size(42, 13);
-            this.lblFromDate.TabIndex = 3;
-            this.lblFromDate.Text = "از تاریخ:";
-            this.lblFromDate.Click += new System.EventHandler(this.lblFromDate_Click);
-            // 
-            // txtStartDate
-            // 
-            this.txtStartDate.Location = new System.Drawing.Point(232, 24);
-            this.txtStartDate.Mask = "0000/00/00";
-            this.txtStartDate.Name = "txtStartDate";
-            this.txtStartDate.Size = new System.Drawing.Size(100, 21);
-            this.txtStartDate.TabIndex = 4;
-            this.txtStartDate.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            this.btnApplyFilter.Location = new System.Drawing.Point(8, 23);
+            this.btnApplyFilter.Name = "btnApplyFilter";
+            this.btnApplyFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnApplyFilter.TabIndex = 7;
+            this.btnApplyFilter.Text = "اعمال";
+            this.btnApplyFilter.UseVisualStyleBackColor = true;
+            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
             // 
             // txtEndDate
             // 
@@ -182,15 +157,39 @@
             this.lblToDate.TabIndex = 5;
             this.lblToDate.Text = "تا تاریخ:";
             // 
-            // btnApplyFilter
+            // txtStartDate
             // 
-            this.btnApplyFilter.Location = new System.Drawing.Point(8, 23);
-            this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(75, 23);
-            this.btnApplyFilter.TabIndex = 7;
-            this.btnApplyFilter.Text = "اعمال";
-            this.btnApplyFilter.UseVisualStyleBackColor = true;
-            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
+            this.txtStartDate.Location = new System.Drawing.Point(232, 24);
+            this.txtStartDate.Mask = "0000/00/00";
+            this.txtStartDate.Name = "txtStartDate";
+            this.txtStartDate.Size = new System.Drawing.Size(100, 21);
+            this.txtStartDate.TabIndex = 4;
+            // 
+            // lblFromDate
+            // 
+            this.lblFromDate.AutoSize = true;
+            this.lblFromDate.Location = new System.Drawing.Point(332, 27);
+            this.lblFromDate.Name = "lblFromDate";
+            this.lblFromDate.Size = new System.Drawing.Size(42, 13);
+            this.lblFromDate.TabIndex = 3;
+            this.lblFromDate.Text = "از تاریخ:";
+            // 
+            // cbCustomer
+            // 
+            this.cbCustomer.FormattingEnabled = true;
+            this.cbCustomer.Location = new System.Drawing.Point(375, 24);
+            this.cbCustomer.Name = "cbCustomer";
+            this.cbCustomer.Size = new System.Drawing.Size(131, 21);
+            this.cbCustomer.TabIndex = 2;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(506, 27);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(67, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "طرف حساب:";
             // 
             // dgReport
             // 

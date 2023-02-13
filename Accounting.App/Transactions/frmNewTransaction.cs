@@ -15,7 +15,20 @@ namespace Accounting.App.Transactions
 {
     public partial class frmNewTransaction : Form
     {
-        DBAccess db = new DBAccess();
+        private DBAccess db = new DBAccess();
+        public int _accountId = 0;
+
+        public int AccountId
+        {
+            get
+            {
+                return _accountId;
+            }
+            set
+            {
+                _accountId = value;
+            }
+        }
 
         public frmNewTransaction()
         {
@@ -26,6 +39,19 @@ namespace Accounting.App.Transactions
         {
             dgCustomers.AutoGenerateColumns = false;
             dgCustomers.DataSource = db.CustomerRepository.GetCustomersName();
+
+            if(_accountId != 0)
+            {
+                var account = db.AccountingRepository.GetById(_accountId);
+                nudAmount.Text = account.Amount.ToString();
+                txtDescription.Text = account.Description;
+                txtName.Text = db.CustomerRepository.GetCustomerNameById(account.CustomerID);
+                rbIncome.Checked = account.TypeID == 1;
+                rbOutcome.Checked = account.TypeID == 2;
+            }
+
+            this.Text = "ویرایش";
+            btnSave.Text = "ویرایش";
         }
 
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -48,7 +74,15 @@ namespace Accounting.App.Transactions
                         Description = txtDescription.Text
                     };
 
-                    db.AccountingRepository.Insert(accouting);
+                    if(AccountId == 0)
+                        db.AccountingRepository.Insert(accouting);
+                    else
+                    {
+                        accouting.AccountingID = AccountId;
+                        db.AccountingRepository.Update(accouting);
+                    }
+
+                    
                     db.Save();
                     DialogResult = DialogResult.OK;
                 }
