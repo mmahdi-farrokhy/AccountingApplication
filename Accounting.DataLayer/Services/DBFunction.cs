@@ -42,14 +42,10 @@ namespace Accounting.DataLayer.Services
         
         public virtual void Update(TEntity entity)
         {
-            //if (_db.Entry(entity).State == EntityState.Detached)
-            //    _dbSet.Attach(entity);
+            if (_db.Entry(entity).State == EntityState.Detached)
+                _dbSet.Attach(entity);
 
-            var existingEntity = GetAll().First(e => e.Equals(entity));
-
-            _db.Entry(existingEntity).CurrentValues.SetValues(entity);
-
-            //_db.Entry(entity).State = EntityState.Modified;
+            _db.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(TEntity entity)

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using Accounting.DataLayer.Context;
 using Accounting.Utility.Convertor;
 using Accounting.App.Transactions;
+using Accounting.ViewModels.Customers;
+using AccoutingModel = Accounting.DataLayer.Context.Accounting;
+using System.Linq.Expressions;
 
 namespace Accounting.App
 {
@@ -23,6 +26,22 @@ namespace Accounting.App
 
         private void frmReport_Load(object sender, EventArgs e)
         {
+            using (DBAccess db = new DBAccess())
+            {
+                List<CustomersListView> customerList = new List<CustomersListView>();
+                customerList.Add(new CustomersListView()
+                {
+                    CustomerID = 0,
+                    CustomerName = "انتخاب کنید"
+                });
+
+                customerList.AddRange(db.CustomerRepository.GetCustomersName());
+                cbCustomer.DataSource = customerList;
+                cbCustomer.DisplayMember = "CustomerName";
+                cbCustomer.ValueMember = "CustomerID";
+
+            }
+
             if (TypeID == 0)
                 this.Text = "گزارش کلی";
             if (TypeID == 1)
@@ -40,13 +59,29 @@ namespace Accounting.App
         {
             using (DBAccess db = new DBAccess())
             {
-                var result = TypeID != 0
-                    ? db.AccountingRepository.GetAll(accounting => accounting.TypeID == TypeID)
-                    : db.AccountingRepository.GetAll();
-                dgReport.AutoGenerateColumns = false;
+                List<AccoutingModel> accountingList = new List<AccoutingModel>();
+                int customerId = int.Parse(cbCustomer.SelectedValue.ToString());
+                Expression<Func<AccoutingModel, bool>> filter;
+                if (TypeID != 0)
+                {
+                    if (customerId != 0)
+                        filter = a => a.TypeID == TypeID && a.CustomerID == customerId;
+                    else
+                        filter = a => a.TypeID == TypeID;
+                }
+                else
+                {
+                    if (customerId != 0)
+                        filter = a => a.CustomerID == customerId;
+                    else
+                        filter = null;
+                }
 
+                accountingList.AddRange(db.AccountingRepository.GetAll(filter));
+
+                dgReport.AutoGenerateColumns = false;
                 dgReport.Rows.Clear();
-                foreach(var accounting in result)
+                foreach(var accounting in accountingList)
                 {
                     string customerName = db.CustomerRepository.GetCustomerNameById(accounting.CustomerID);
                     dgReport.Rows.Add(accounting.AccountingID, customerName, accounting.Amount, accounting.DateTime.ToSolarDate(), accounting.Description);
