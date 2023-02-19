@@ -60,6 +60,9 @@ namespace Accounting.App
             using (DBAccess db = new DBAccess())
             {
                 List<AccoutingModel> accountingList = new List<AccoutingModel>();
+                DateTime? startDate;
+                DateTime? endDate;                
+
                 int customerId = int.Parse(cbCustomer.SelectedValue.ToString());
                 Expression<Func<AccoutingModel, bool>> filter;
                 if (TypeID != 0)
@@ -78,6 +81,20 @@ namespace Accounting.App
                 }
 
                 accountingList.AddRange(db.AccountingRepository.GetAll(filter));
+
+                if (txtStartDate.Text != "    /  /")
+                {
+                    startDate = Convert.ToDateTime(txtStartDate.Text);
+                    startDate = DateConversion.ToInternationalDate(startDate.Value);
+                    accountingList = accountingList.Where(a => a.DateTime >= startDate.Value).ToList();
+                }
+
+                if (txtEndDate.Text != "    /  /")
+                {
+                    endDate = Convert.ToDateTime(txtEndDate.Text);
+                    endDate = DateConversion.ToInternationalDate(endDate.Value);
+                    accountingList = accountingList.Where(a => a.DateTime <= endDate.Value).ToList();
+                }
 
                 dgReport.AutoGenerateColumns = false;
                 dgReport.Rows.Clear();

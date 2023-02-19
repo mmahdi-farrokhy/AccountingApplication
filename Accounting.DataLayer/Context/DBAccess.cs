@@ -13,6 +13,7 @@ namespace Accounting.DataLayer.Context
         private Accounting_DBEntities db = new Accounting_DBEntities();
         private ICustomerRepository _customerRepository;
         private DBFunction<Accounting> _accountingRepository;
+        private DBFunction<Login> _loginRepository;
 
 
         public DBFunction<Accounting> AccountingRepository
@@ -23,6 +24,16 @@ namespace Accounting.DataLayer.Context
                     _accountingRepository = new DBFunction<Accounting>(db);
 
                 return _accountingRepository;
+            }
+        }
+        public DBFunction<Login> LoginRepository
+        {
+            get
+            {
+                if (_loginRepository == null)
+                    _loginRepository = new DBFunction<Login>(db);
+
+                return _loginRepository;
             }
         }
 

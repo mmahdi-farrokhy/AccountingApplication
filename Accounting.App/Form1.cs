@@ -1,4 +1,5 @@
 ﻿using Accounting.App.Transactions;
+using Accounting.Utility.Convertor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 namespace Accounting.App
 {
     public partial class Form1 : Form
-    {
+    {        
         public Form1()
         {
             InitializeComponent();
@@ -49,6 +50,32 @@ namespace Accounting.App
             frmReport reportForm = new frmReport();
             reportForm.TypeID = 0;
             reportForm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {            
+            this.Hide();
+            frmLogin loginForm = new frmLogin();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                lblDate.Text = DateTime.Now.ToSolarDate();
+                lblTime.Text = DateTime.Now.ToString("HH:MM:ss");
+                this.Show();
+            }
+            else
+                Application.Exit();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:MM:ss");
+        }
+
+        private void btnLoginSettings_Click(object sender, EventArgs e)
+        {
+            frmLogin loginForm = new frmLogin();
+            loginForm.IsEditable = true;
+            loginForm.ShowDialog();
         }
     }
 }
