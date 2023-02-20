@@ -13,7 +13,7 @@ namespace Accounting.DataLayer.Repositories
         List<Customers> GetAllCustomers();
         Customers GetCustomerById(int customerId);
         IEnumerable<Customers> GetCustomersByFilter(string filter);
-        List<CustomersListView> GetCustomersName(string filter = "");
+        List<CustomersListViewModel> GetCustomersName(string filter = "");
         int GetCustomerIdByName(string FullName);
         string GetCustomerNameById(int Id);
         bool InsertCustomer(Customers customer);

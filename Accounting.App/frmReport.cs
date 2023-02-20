@@ -28,8 +28,8 @@ namespace Accounting.App
         {
             using (DBAccess db = new DBAccess())
             {
-                List<CustomersListView> customerList = new List<CustomersListView>();
-                customerList.Add(new CustomersListView()
+                List<CustomersListViewModel> customerList = new List<CustomersListViewModel>();
+                customerList.Add(new CustomersListViewModel()
                 {
                     CustomerID = 0,
                     CustomerName = "انتخاب کنید"
@@ -101,7 +101,7 @@ namespace Accounting.App
                 foreach(var accounting in accountingList)
                 {
                     string customerName = db.CustomerRepository.GetCustomerNameById(accounting.CustomerID);
-                    dgReport.Rows.Add(accounting.AccountingID, customerName, accounting.Amount, accounting.DateTime.ToSolarDate(), accounting.Description);
+                    dgReport.Rows.Add(accounting.AccountingID, customerName, accounting.Amount, accounting.DateTime.ToSolarDate(), accounting.Description, accounting.TypeID);
                 }
             }
         }
@@ -141,6 +141,30 @@ namespace Accounting.App
                     Filter();
                 }
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataTable dtPrint = new DataTable();
+            dtPrint.Columns.Add("Customer");
+            dtPrint.Columns.Add("Amount");
+            dtPrint.Columns.Add("Date");
+            dtPrint.Columns.Add("Description");
+            dtPrint.Columns.Add("Type");
+            foreach (DataGridViewRow item in dgReport.Rows)
+            {
+                dtPrint.Rows.Add(
+                    item.Cells[1].Value.ToString(),
+                    item.Cells[2].Value.ToString(),
+                    item.Cells[3].Value.ToString(),
+                    item.Cells[4].Value.ToString(),
+                    item.Cells[5].Value.ToString() == "1" ? "درآمد" : "مخارج"
+                    );
+            }
+
+            stiPrint.Load(Application.StartupPath + "/Report.mrt");
+            stiPrint.RegData("DT", dtPrint);
+            stiPrint.Print();
         }
     }
 }

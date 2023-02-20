@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.Buisness", "Accounting.Buisness\Accounting.Buisness.csproj", "{A968D312-0F51-4868-B0A7-E902CF89236F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0B641EE1-06ED-4C96-B2CF-36D23E350553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B641EE1-06ED-4C96-B2CF-36D23E350553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B641EE1-06ED-4C96-B2CF-36D23E350553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A968D312-0F51-4868-B0A7-E902CF89236F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A968D312-0F51-4868-B0A7-E902CF89236F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A968D312-0F51-4868-B0A7-E902CF89236F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A968D312-0F51-4868-B0A7-E902CF89236F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

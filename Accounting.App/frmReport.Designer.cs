@@ -42,11 +42,13 @@
             this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.lblName = new System.Windows.Forms.Label();
             this.dgReport = new System.Windows.Forms.DataGridView();
+            this.stiPrint = new Stimulsoft.Report.StiReport();
             this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgReport)).BeginInit();
@@ -112,6 +114,7 @@
             this.btnPrint.Size = new System.Drawing.Size(60, 59);
             this.btnPrint.Text = "چاپ";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // groupBox1
             // 
@@ -203,13 +206,35 @@
             this.Customer,
             this.Amount,
             this.Date,
-            this.Description});
+            this.Description,
+            this.Type});
             this.dgReport.Location = new System.Drawing.Point(2, 132);
             this.dgReport.Name = "dgReport";
             this.dgReport.ReadOnly = true;
             this.dgReport.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgReport.Size = new System.Drawing.Size(580, 227);
             this.dgReport.TabIndex = 2;
+            // 
+            // stiPrint
+            // 
+            this.stiPrint.CookieContainer = null;
+            this.stiPrint.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiPrint.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiPrint.ReportAlias = "Report";
+            this.stiPrint.ReportGuid = "290209efaa09412c89a3848de25027ac";
+            this.stiPrint.ReportName = "Report";
+            this.stiPrint.ReportSource = null;
+            this.stiPrint.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
+            this.stiPrint.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiPrint.UseProgressInThread = false;
             // 
             // CustomerID
             // 
@@ -246,6 +271,14 @@
             this.Description.HeaderText = "بابت";
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "TypeID";
+            this.Type.HeaderText = "نوع تراکنش";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Visible = false;
             // 
             // frmReport
             // 
@@ -286,10 +319,12 @@
         private System.Windows.Forms.MaskedTextBox txtEndDate;
         private System.Windows.Forms.Label lblToDate;
         private System.Windows.Forms.DataGridView dgReport;
+        private Stimulsoft.Report.StiReport stiPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
     }
 }

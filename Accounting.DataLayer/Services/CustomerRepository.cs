@@ -38,11 +38,11 @@ namespace Accounting.DataLayer.Services
                                         .ToList();
         }
 
-        public List<CustomersListView> GetCustomersName(string filter = "")
+        public List<CustomersListViewModel> GetCustomersName(string filter = "")
         {
             if (filter == "")
                 return db.Customers
-                    .Select(customer => new CustomersListView()
+                    .Select(customer => new CustomersListViewModel()
                     {
                         CustomerID = customer.CustomerID,
                         CustomerName = customer.FullName
@@ -50,7 +50,7 @@ namespace Accounting.DataLayer.Services
 
             return db.Customers
                 .Where(customer => customer.FullName.Contains(filter))
-                .Select(customer => new CustomersListView()
+                .Select(customer => new CustomersListViewModel()
                 {
                     CustomerID = customer.CustomerID,
                     CustomerName = customer.FullName

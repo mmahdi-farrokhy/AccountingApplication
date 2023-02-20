@@ -1,5 +1,7 @@
 ﻿using Accounting.App.Transactions;
 using Accounting.Utility.Convertor;
+using Accounting.ViewModels.Accounting;
+using Buisness = Accounting.Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,9 +63,18 @@ namespace Accounting.App
                 lblDate.Text = DateTime.Now.ToSolarDate();
                 lblTime.Text = DateTime.Now.ToString("HH:MM:ss");
                 this.Show();
+                MonthlyReport();
             }
             else
                 Application.Exit();
+        }
+
+        private void MonthlyReport()
+        {
+            MonthlyReportViewModel monthlyReport = Buisness.Accounting.MainFormReport();
+            lblShowIncome.Text = monthlyReport.Income.ToString("#,0");
+            lblShowOutcome.Text = monthlyReport.Outcome.ToString("#,0");
+            lblShowBalance.Text = monthlyReport.AccountBalance.ToString("#,0");
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -76,6 +87,11 @@ namespace Accounting.App
             frmLogin loginForm = new frmLogin();
             loginForm.IsEditable = true;
             loginForm.ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            MonthlyReport();
         }
     }
 }
